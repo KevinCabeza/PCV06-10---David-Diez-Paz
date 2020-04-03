@@ -1,0 +1,29 @@
+@startuml
+skinparam packageStyle rectangle
+left to right direction
+actor Alumno
+actor Profesor
+rectangle AulaVirtual{
+    Alumno -- (Curso) : Establecido en
+    Profesor -- (Curso) : Imparte
+    (Materia) <. (Curso) : incluide
+    (Curso) <... (Contenido) : extends
+    (Curso) <... (Tarea) : extends
+    (Curso) <... (Examen) : extends
+    (Tarea) <. (Calificación) : incluide
+    (Examen) <. (Calificación) : incluide
+    (Calificación) <. Profesor : incluide
+    (Crear Materia) <. (Materia) : incluide
+    (Materia) <. (Gestión Materia) : incluide
+    Profesor -- (Gestión Materia) : Realizado por
+    (Gestión Materia) <... (Establecer Contenido) : extends
+    (Gestión Materia) <... (Establecer Tarea) : extends
+    (Gestión Materia) <... (Establecer Examen) : extends
+    (Gestión Materia) <... (Establecer Grupos) : extends
+    (Grupo) <. (Establecer Grupos) : incluide
+    Profesor -- (Grupo) : Gestiona
+    (Alumnos) <. (Grupo) : incluide
+    (Grupo) <... (Incluir Alumno) : extends
+    (Grupo) <... (Eliminar Alumno) : extends
+}
+@enduml

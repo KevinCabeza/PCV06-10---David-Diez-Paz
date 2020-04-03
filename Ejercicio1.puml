@@ -1,0 +1,23 @@
+@startuml Ejercicio1
+left to right direction
+skinparam packageStyle rectangle
+actor Fabrica
+actor Socio
+actor Cliente
+rectangle ProcesoDeVenta{
+    (Productos) -- Socio : Retira
+    Fabrica -- (Productos) : Aporta
+    (Venta) -- Socio : Establece
+    Socio -- (Beneficios) : Obtiene
+    Cliente -- (Venta) : Realiza
+    (Beneficios) <. (Venta) : include
+    (Venta) <... (Tienda propia) : extends
+    (Venta) <... (Otro socio) : extends
+    (Venta) <... (Tienda de fabrica) : extends
+    (Venta) <... (App Web) : extends
+    Cliente -- (App Web) : Consulta
+    (App Web) <. (Precio Productos) : include
+    (App Web) <. (Catálogo Productos) : include
+    (App Web) <. (Pedido Realizado) : include
+}
+@enduml
